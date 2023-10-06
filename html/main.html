@@ -36,13 +36,28 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        $(document).ready(async function() {
-            let docs = await getDocs(collection(db, "card"));
-            docs.forEach((doc) => {
-                let row = doc.data();
-                console.log(row);
-            });
-        })
+        let docs = await getDocs(collection(db, "cards"));
+
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let content = row["content"];
+            let imageInput = row["imageInput"];
+            let titleInput = row["titleInput"];
+
+            let card_html = `
+            <div class="col">
+                <div class="card">
+                    <img src=${imageInput}
+                        class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${titleInput}</h5>
+                        <p class="card-text">${content}</p>
+                    </div>
+                </div>
+            </div>`;
+            $('.cards').append(card_html);
+        });
+
     </script>
 
 <body>
@@ -52,7 +67,6 @@
                 <div class="col-md-6 px-0">
                     <h1 class="display-4 fst-italic">팀 봄</h1>
                     <p class="lead my-3">봄을 소개합니다.</p>
-
                 </div>
             </div>
         </div>
@@ -93,18 +107,9 @@
             </div>
         </div>
 
-        <!-- card section 작업 예정-->
-        <div class="cards"> 
-            <div class="col">
-                <div class="card">
-                    <img src="https://e1.pngegg.com/pngimages/246/770/png-clipart-cute-pokemon-pikachu.png"
-                        class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">이름 or 제목</h5>
-                        <p class="card-text">내용</p>
-                    </div>
-                </div>
-            </div>
+        <!-- append로 추가받기 위한 div -->
+        <div class="cards d-flex">
+            <!-- do nothing -->
         </div>
 
     </div>
