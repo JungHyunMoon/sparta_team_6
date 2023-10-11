@@ -39,7 +39,7 @@ Edit 버튼을 눌러 Modal창을 띄웠을때의 데이터 접근 방식은 다
 
 보안 ISSUE
 - XSS ATTACK
-  본 프로젝트에서는 멤버 카드를 Firebase에서 가져아 EL문법으로 변수를 담고, 자바스크립트 **백틱**에 감싸서 card div에 append하는 방법을 사용하고 있었다. 때문에 유저가 고의 또는 의도하지 않은 악성 스크립트 (ex <br>, \n 등등) 으로 인해 css가 깨지는 상황 발생 했기에 **XSS(Cross Site Scripting) Filter** 를 작업이 필요했다. 이는 Jquery함수 **escapeHTML**으로 간단히 해결하였다.
+  본 프로젝트에서는 멤버 카드를 Firebase에서 가져아 EL문법으로 변수를 담고, 자바스크립트 **백틱**에 감싸서 card div에 append하는 방법을 사용하고 있었다. 때문에 유저가 고의 또는 의도하지 않은 악성 스크립트 (ex "<br>", "\n" 등등) 으로 인해 css가 깨지는 상황 발생 했기에 **XSS(Cross Site Scripting) Filter** 를 작업이 필요했다. 이는 Jquery함수 **escapeHTML**으로 간단히 해결하였다.
 - Firebase cofiguration
 파이어 베이스 API키는 개인정보라 gitHub에 올리면 해킹의 문제가 있음을 인지하였다. vscode 설정으로 환경변수를 등록하는 방법을 최초로 생각해 보았으나 이후 팀원들과 논의한 결과 gitignore로 깃에 올리지 않고 팀원들과 API KEY를 공유하는 방향으로 결정했다.
 - CORS
