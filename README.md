@@ -34,9 +34,9 @@ Edit 버튼을 눌러 Modal창을 띄웠을때의 데이터 접근 방식은 다
 ![Update](https://github.com/JungHyunMoon/sparta_team_6/assets/120004247/e6b921ad-fe83-4851-b564-ea8f4f9cb90d)
 
 ## TroubleShooting
-- 형상관리
+형상관리
 - 개발 초기 코드 양이 많지 않을 때 충돌이 일어나지 않았지만 점점 코드가 길어지고 팀원 각자의 기능 개발에 있어 연관성이 많아짐에 따라 merge시에 충돌이 자주 일어나는 현상이 있었다. 심지어 깃허브 repository 소유자(쓰고 있는 본인..)의 깃 설정이 꼬여서 눈물을 머금고 초기화(init)해서 commit 내역을 날려버린 참사가 있었다. 이후 branch를 꼭 따로 분리해서 main은 매우 완벽한 상태의 코드만 merge해야 함을 깨달을 수 있었다.
-- 보안 ISSUE
+보안 ISSUE
 - XSS ATTACK
   본 프로젝트에서는 멤버 카드를 Firebase에서 가져아 EL문법으로 변수를 담고, 자바스크립트 **백틱**에 감싸서 card div에 append하는 방법을 사용하고 있었다. 때문에 유저가 고의 또는 의도하지 않은 악성 스크립트 (ex <br>, \n 등등) 으로 인해 css가 깨지는 상황 발생 했기에 **XSS(Cross Site Scripting) Filter** 를 작업이 필요했다. 이는 Jquery함수 **escapeHTML**으로 간단히 해결하였다.
 - Firebase cofiguration
